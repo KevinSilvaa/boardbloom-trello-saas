@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/utils/cn'
 
 export type Organization = {
@@ -103,5 +104,17 @@ export function NavItem({
         ))}
       </AccordionContent>
     </AccordionItem>
+  )
+}
+
+NavItem.Skeleton = function SkeletonNavItem() {
+  return (
+    <div className="flex items-center gap-x-2">
+      <div className="relative size-10 shrink-0">
+        <Skeleton className="absolute size-full" />
+      </div>
+
+      <Skeleton className="h-10 w-full" />
+    </div>
   )
 }
