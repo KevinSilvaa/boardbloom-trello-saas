@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "4.29.12",
+    "@prisma/client": "5.12.1",
     "@radix-ui/react-accordion": "1.1.2",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-separator": "1.0.3",
@@ -22,7 +23,8 @@
     "react-dom": "^18.2.0",
     "tailwind-merge": "2.2.2",
     "tailwindcss-animate": "1.0.7",
-    "usehooks-ts": "3.1.0"
+    "usehooks-ts": "3.1.0",
+    "zod": "3.22.5"
   },
   "devDependencies": {
     "@rocketseat/eslint-config": "2.2.2",
@@ -36,6 +38,7 @@
     "postcss": "8.4.38",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.13",
+    "prisma": "5.12.1",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.4"
   }
