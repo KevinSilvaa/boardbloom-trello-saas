@@ -1,10 +1,9 @@
 'use client'
 
 import { createBoard } from '@/actions/create-board'
+import { FormInput } from '@/components/form/form-input'
+import { FormSubmit } from '@/components/form/form-submit'
 import { useAction } from '@/hooks/use-action'
-
-import { FormButton } from './form-button'
-import { FormInput } from './form-input'
 
 export function Form() {
   const { execute, fieldErrors } = useAction(createBoard, {
@@ -25,10 +24,10 @@ export function Form() {
   return (
     <form action={handleSubmit}>
       <div className="flex flex-col gap-2">
-        <FormInput errors={fieldErrors} />
+        <FormInput id="title" label="Board Title" errors={fieldErrors} />
       </div>
 
-      <FormButton />
+      <FormSubmit>Save</FormSubmit>
     </form>
   )
 }
