@@ -1,28 +1,17 @@
-import { prisma } from '@/lib/prisma'
+import { Separator } from '@/components/ui/separator'
 
-import { Board } from './board'
-import { Form } from './form'
+import { BoardList } from './_components/board-list'
+import { Info } from './_components/info'
 
-type OrganizationPageParams = {
-  params: {
-    organizationId: string
-  }
-}
-
-export default async function OrganizationPage({
-  params,
-}: OrganizationPageParams) {
-  const boards = await prisma.board.findMany()
-  console.log(params.organizationId)
-
+export default async function OrganizationPage() {
   return (
-    <div>
-      <Form />
+    <div className="mb-20 w-full">
+      <Info />
 
-      <div className="space-y-2">
-        {boards.map((board) => (
-          <Board key={board.id} id={board.id} title={board.title} />
-        ))}
+      <Separator className="my-4" />
+
+      <div className="px-2 md:px-4">
+        <BoardList />
       </div>
     </div>
   )
