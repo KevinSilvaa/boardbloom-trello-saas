@@ -31,7 +31,7 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
   const [title, setTitle] = useState(board.title)
   const [isEditing, setIsEditing] = useState(false)
 
-  async function toggleEditing() {
+  function toggleEditing() {
     if (isEditing) {
       return setIsEditing(false)
     }
@@ -43,7 +43,7 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
     })
   }
 
-  async function onSubmit(formData: FormData) {
+  function onSubmit(formData: FormData) {
     const title = formData.get('title') as string
 
     execute({ title, id: board.id })
