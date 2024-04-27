@@ -107,7 +107,7 @@ export function NavItem({
   )
 }
 
-NavItem.Skeleton = function SkeletonNavItem() {
+NavItem.Skeleton = function NavItemSkeleton() {
   return (
     <div className="flex items-center gap-x-2">
       <div className="relative size-10 shrink-0">

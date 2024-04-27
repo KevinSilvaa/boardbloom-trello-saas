@@ -18,7 +18,7 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
     onSuccess: (data) => {
       toast.success(`Board "${data.title}" updated!`)
       setTitle(data.title)
-      toggleEditing()
+      disableEditing()
     },
     onError: (error) => {
       toast.error(error)
@@ -31,16 +31,16 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
   const [title, setTitle] = useState(board.title)
   const [isEditing, setIsEditing] = useState(false)
 
-  function toggleEditing() {
-    if (isEditing) {
-      return setIsEditing(false)
-    }
-
+  function enableEditing() {
     setIsEditing(true)
     setTimeout(() => {
       inputRef.current?.focus()
       inputRef.current?.select()
     })
+  }
+
+  function disableEditing() {
+    setIsEditing(false)
   }
 
   function onSubmit(formData: FormData) {
@@ -74,7 +74,7 @@ export function BoardTitleForm({ board }: BoardTitleFormProps) {
   return (
     <Button
       variant="transparent"
-      onClick={toggleEditing}
+      onClick={enableEditing}
       className="size-auto px-2 py-1 text-lg font-bold"
     >
       {title}

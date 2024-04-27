@@ -75,7 +75,7 @@ export function Header({ data }: HeaderProps) {
   )
 }
 
-Header.Skeleton = function SkeletonHeader() {
+Header.Skeleton = function HeaderSkeleton() {
   return (
     <div className="mb-6 flex items-start gap-x-3">
       <Skeleton className="mt-1 size-6 bg-neutral-200" />

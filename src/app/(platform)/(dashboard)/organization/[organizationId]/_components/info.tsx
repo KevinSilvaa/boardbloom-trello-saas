@@ -37,7 +37,7 @@ export function Info() {
   )
 }
 
-Info.Skeleton = function SkeletonInfo() {
+Info.Skeleton = function InfoSkeleton() {
   return (
     <div className="flex items-center gap-x-4">
       <div className="relative size-[60px]">

@@ -65,7 +65,7 @@ export async function BoardList() {
   )
 }
 
-BoardList.Skeleton = function SkeletonBoardList() {
+BoardList.Skeleton = function BoardListSkeleton() {
   return (
     <div className="space-y-4">
       <div className="flex h-7 items-center">
