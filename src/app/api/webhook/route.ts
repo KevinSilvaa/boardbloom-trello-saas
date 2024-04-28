@@ -5,7 +5,7 @@ import Stripe from 'stripe'
 import { prisma } from '@/lib/prisma'
 import { stripe } from '@/lib/stripe'
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   const body = await req.text()
 
   const signature = headers().get('Stripe-Signature') as string
