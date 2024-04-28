@@ -6,7 +6,10 @@ import { redirect } from 'next/navigation'
 import { FormPopover } from '@/components/form/form-popover'
 import { Hint } from '@/components/hint'
 import { Skeleton } from '@/components/ui/skeleton'
+import { MAX_FREE_BOARDS } from '@/constants/boards'
 import { prisma } from '@/lib/prisma'
+import { getAvailableCount } from '@/utils/org-limit'
+import { checkSubscription } from '@/utils/subscription'
 
 export async function BoardList() {
   const { orgId } = auth()
@@ -23,6 +26,9 @@ export async function BoardList() {
       createdAt: 'desc',
     },
   })
+
+  const availableCount = await getAvailableCount()
+  const isPro = await checkSubscription()
 
   return (
     <div className="space-y-4">
@@ -50,7 +56,11 @@ export async function BoardList() {
             className="relative flex aspect-video size-full flex-col items-center justify-center gap-y-1 rounded-sm bg-muted transition hover:opacity-75"
           >
             <p className="text-sm">Create new board</p>
-            <span className="text-sm">5 remaining</span>
+            <span className="text-sm">
+              {isPro
+                ? 'Unlimited'
+                : `${MAX_FREE_BOARDS - availableCount} remaining`}
+            </span>
 
             <Hint
               sideOffset={40}

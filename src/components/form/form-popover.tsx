@@ -13,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { useProModal } from '@/contexts/pro-modal-context'
 import { useAction } from '@/hooks/use-action'
 
 import { FormInput } from './form-input'
@@ -32,6 +33,7 @@ export function FormPopover({
   align,
   sideOffset = 0,
 }: FormPopoverProps) {
+  const proModal = useProModal()
   const router = useRouter()
   const closeRef = useRef<ElementRef<'button'>>(null)
 
@@ -43,6 +45,7 @@ export function FormPopover({
     },
     onError: (error) => {
       toast.error(error)
+      proModal.onOpen()
     },
   })
 

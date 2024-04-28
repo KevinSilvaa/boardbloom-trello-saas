@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import { createAuditLog } from '@/utils/create-audit-log'
 import { createSafeAction } from '@/utils/create-safe-action'
+import { decreaseAvailableCount } from '@/utils/org-limit'
 
 import { DeleteBoard } from './schema'
 import { InputType, ReturnType } from './types'
@@ -32,6 +33,8 @@ export async function handler(data: InputType): Promise<ReturnType> {
         orgId,
       },
     })
+
+    await decreaseAvailableCount()
 
     await createAuditLog({
       entityId: board.id,

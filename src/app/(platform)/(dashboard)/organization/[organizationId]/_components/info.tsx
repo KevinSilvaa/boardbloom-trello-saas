@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 'use client'
 
 import { useOrganization } from '@clerk/nextjs'
@@ -7,7 +6,11 @@ import Image from 'next/image'
 
 import { Skeleton } from '@/components/ui/skeleton'
 
-export function Info() {
+type InfoProps = {
+  isPro: boolean
+}
+
+export function Info({ isPro }: InfoProps) {
   const { organization, isLoaded } = useOrganization()
 
   if (!isLoaded) {
@@ -30,7 +33,7 @@ export function Info() {
 
         <div className="flex items-center text-xs text-muted-foreground">
           <CreditCard className="mr-1 size-3" />
-          Free
+          {isPro ? 'Pro' : 'Free'}
         </div>
       </div>
     </div>

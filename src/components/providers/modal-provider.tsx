@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
 
 import { CardModal } from '@/components/modals/card-modal'
 import { CardModalContextProvider } from '@/contexts/card-modal-context'
+import { ProModalContextProvider } from '@/contexts/pro-modal-context'
+
+import { ProModal } from '../modals/pro-modal'
 
 export function ModalProvider({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false)
@@ -20,7 +23,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
     <>
       <CardModalContextProvider>
         <CardModal />
-        {children}
+        <ProModalContextProvider>
+          <ProModal />
+          {children}
+        </ProModalContextProvider>
       </CardModalContextProvider>
     </>
   )
