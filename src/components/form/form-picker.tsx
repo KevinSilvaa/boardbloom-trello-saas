@@ -90,6 +90,7 @@ export function FormPicker({ id, errors }: FormPickerProps) {
             />
             <Image
               fill
+              sizes="100%"
               src={image.urls.thumb}
               alt="Unsplash image"
               className="rounded-sm object-cover"

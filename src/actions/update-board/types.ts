@@ -1,7 +1,7 @@
 import { Board } from '@prisma/client'
 import { z } from 'zod'
 
-import { ActionState } from '@/lib/create-safe-action'
+import { ActionState } from '@/utils/create-safe-action'
 
 import { UpdateBoard } from './schema'
 

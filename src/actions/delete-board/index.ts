@@ -1,11 +1,13 @@
 'use server'
 
 import { auth } from '@clerk/nextjs'
+import { ACTION, ENTITY_TYPE } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
-import { createSafeAction } from '@/lib/create-safe-action'
 import { prisma } from '@/lib/prisma'
+import { createAuditLog } from '@/utils/create-audit-log'
+import { createSafeAction } from '@/utils/create-safe-action'
 
 import { DeleteBoard } from './schema'
 import { InputType, ReturnType } from './types'
@@ -21,12 +23,21 @@ export async function handler(data: InputType): Promise<ReturnType> {
 
   const { id } = data
 
+  let board
+
   try {
-    await prisma.board.delete({
+    board = await prisma.board.delete({
       where: {
         id,
         orgId,
       },
+    })
+
+    await createAuditLog({
+      entityId: board.id,
+      entityTitle: board.title,
+      entityType: ENTITY_TYPE.BOARD,
+      action: ACTION.DELETE,
     })
   } catch (error) {
     return {

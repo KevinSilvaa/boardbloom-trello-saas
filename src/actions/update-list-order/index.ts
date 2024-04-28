@@ -3,8 +3,8 @@
 import { auth } from '@clerk/nextjs'
 import { revalidatePath } from 'next/cache'
 
-import { createSafeAction } from '@/lib/create-safe-action'
 import { prisma } from '@/lib/prisma'
+import { createSafeAction } from '@/utils/create-safe-action'
 
 import { UpdateListOrder } from './schema'
 import { InputType, ReturnType } from './types'
